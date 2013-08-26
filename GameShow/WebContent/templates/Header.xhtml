@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<div id="header" class="principal">
+
+		<h:form>
+			<h:commandLink value="Fabricante"
+				action="#{redirecionaMB.redirecionar}">
+				<f:setPropertyActionListener
+					target="#{redirecionaMB.paginaSelecionada}"
+					value="Fabricante" />
+			</h:commandLink>
+			<h:commandLink value="Game"
+				action="#{redirecionaMB.redirecionarGame}" />
+		</h:form>
+
+	</div>
+
+
+</ui:composition>
+
+
+

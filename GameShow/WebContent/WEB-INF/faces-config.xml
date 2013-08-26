@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+    version="2.1">
+	
+	<managed-bean>
+		<managed-bean-name>redirecionaMB</managed-bean-name>
+		<managed-bean-class>com.natal.beans.RedirecionaMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>cadGame</managed-bean-name>
+		<managed-bean-class>com.natal.beans.CadastroGameMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>fabricanteMB</managed-bean-name>
+		<managed-bean-class>com.natal.beans.FabricanteMB</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>layoutMB</managed-bean-name>
+		<managed-bean-class>com.natal.beans.LayoutMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+</faces-config>
+

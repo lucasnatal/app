@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:outputStylesheet library="css/" name="Style.css" />
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Excluir Fabricante</title>
+</h:head>
+<h:body>
+	<!-- Gambiarra provisoria -->
+	<div id="menu">
+		<h:form>
+			<h:commandLink styleClass="back-page" value="Voltar"
+				action="#{redirecionaMB.voltar}" />
+			<h:commandLink value="Excluir itens selecionados"
+				action="#{cadFabricante.excluir}" />
+		</h:form>
+	</div>
+	<!--FIM Gambiarra provisoria -->
+	<h:form>
+		<h:panelGrid>
+			<h:selectManyCheckbox value="#{cadFabricante.fabricantesExclui}">
+
+				<f:selectItems value="#{cadFabricante.fabricantes}" var="fab"
+					itemValue="#{fab}">
+
+					<h:dataTable styleClass="" headerClass="" rowClasses="" border="0">
+
+						<h:column>
+							<f:facet name="header">*</f:facet>
+							<f:selectItem itemValue="#{fab}" />
+
+
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">ID </f:facet>
+						#{fab.id}
+				</h:column>
+
+						<h:column>
+							<f:facet name="header">Nome </f:facet>
+						#{fab.nome}
+				</h:column>
+
+						<h:column>
+							<f:facet name="header">Origem </f:facet>
+						#{fab.origem}
+				</h:column>
+
+						<h:column>
+							<f:facet name="header">Indie </f:facet>
+						#{fab.indie}
+				</h:column>
+
+
+					</h:dataTable>
+				</f:selectItems>
+			</h:selectManyCheckbox>
+		</h:panelGrid>
+
+
+
+
+		</h:selectManyCheckbox>
+
+	</h:form>
+
+	<h:selectManyCheckbox value="#{cadFabricante.fabricantesExclui}">
+
+		<h:commandButton value="Excluir itens selecionados"
+			action="#{cadFabricante.excluir}" />
+	</h:form>
+
+
+</h:body>
+</html>

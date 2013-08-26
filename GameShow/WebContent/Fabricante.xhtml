@@ -1,0 +1,109 @@
+<ui:composition template="/templates/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="title">
+		<title>GameShow - Fabricantes</title>
+	</ui:define>
+	<ui:define name="content">
+		<f:ajax event="load"
+			onevent="document.getElementById('formulario-fabricante:input-search-fabricantes').focus()" />
+		<div id="content-fabricantes" class="container">
+			<h:form id="formulario-fabricante">
+
+				<!-- Pesquisa rápida -->
+				<div class="search-bar">
+					<h:panelGrid>
+						<h:outputLabel value="Pesquisar" for="input-search-fabricantes" />
+						<h:inputText id="input-search-fabricantes"
+							styleClass="input-search" value="#{fabricanteMB.filter}">
+							<f:ajax event="keyup" listener="#{fabricanteMB.search}"
+								render="lista-fabricantes" />
+
+						</h:inputText>
+
+					</h:panelGrid>
+				</div>
+
+
+				<h:dataTable id="lista-fabricantes"
+					value="#{not empty fabricanteMB.filter ?  fabricanteMB.listaFiltrados : fabricanteMB.lista}"
+					var="item" rendered="#{not empty fabricanteMB.lista}">
+
+					<h:column headerClass="checkHeaderTable">
+						<f:facet name="header">
+							<h:selectBooleanCheckbox value="#{fabricanteMB.checkAll}">
+								<f:ajax event="click" listener="#{fabricanteMB.marcarTodos}"
+									render="lista-fabricantes" />
+							</h:selectBooleanCheckbox>
+						</f:facet>
+						<h:selectBooleanCheckbox value="#{item.selected}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Código</f:facet>
+						#{item.id}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nome
+							<h:commandButton
+								image="#{fabricanteMB.sorted ? (fabricanteMB.asc ? 'images/asc.gif' : 'images/desc.gif') : 'images/sort.gif'}"
+								action="#{fabricanteMB.sort}">
+								<f:setPropertyActionListener
+									target="#{fabricanteMB.ordenadoPor}"
+									value="#{fabricanteMB.fc.SORT_NOME}" />
+								<f:ajax render="lista-fabricantes" />
+							</h:commandButton>
+						</f:facet>
+						#{item.nome}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Origem
+							<h:commandButton
+								image="#{fabricanteMB.sorted ? (fabricanteMB.asc ? 'images/asc.gif' : 'images/desc.gif') : 'images/sort.gif'}">
+								<f:ajax event="click" listener="#{fabricanteMB.sort}"
+									render="lista-fabricantes" />
+							</h:commandButton>
+
+						</f:facet>
+						#{item.origem}
+					</h:column>
+
+					<h:column headerClass="booleanDataTable">
+						<f:facet name="header">Indie</f:facet>
+						<div style="width: 20px; margin-left: auto; margin-right: auto;">
+							<h:graphicImage value="#{item.indie ? '/images/thumb.jpg' : ''}" />
+						</div>
+					</h:column>
+
+					<h:column headerClass="tableOptions">
+						<f:facet name="header"></f:facet>
+						<h:commandButton title="Editar" image="/images/pen_edit.png">
+
+						</h:commandButton>
+					</h:column>
+
+					<h:column headerClass="tableOptions">
+						<f:facet name="header"></f:facet>
+						<h:commandButton title="Excluir" image="/images/garbage.jpg">
+							<f:ajax event="click" listener="#{fabricanteMB.excluir}"
+								render="lista-fabricantes">
+								<f:setPropertyActionListener
+									target="#{fabricanteMB.selectedItem}" value="item" />
+							</f:ajax>
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+
+
+
+			</h:form>
+		</div>
+	</ui:define>
+
+
+
+
+</ui:composition>
