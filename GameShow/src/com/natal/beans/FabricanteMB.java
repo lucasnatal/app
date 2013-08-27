@@ -154,7 +154,7 @@ public class FabricanteMB {
 		for (int i = 0; i < this.lista.size(); i++) {
 			this.lista.get(i).setSelected(this.checkAll);
 		}
-
+		//teste
 	}
 	
 	public void search(){
